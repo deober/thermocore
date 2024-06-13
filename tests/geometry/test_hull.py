@@ -6,6 +6,8 @@ from thermocore.geometry.hull import (
     lower_hull,
     simplex_energy_equation_matrix,
     lower_hull_simplex_containing,
+    simplex_volume,
+    trapezoid_rule_n_dim,
 )
 from tests.geometry.binary import (
     binary_points,
@@ -117,3 +119,19 @@ def test_hull_correlation_calculator(
 
 
 # TODO: Tests for ternary data
+
+def test_simplex_volume():
+    """Tests the function 'simplex_volume' by confirming that the area of the 3D simplex [[0,0,0],[1,0,0],[0,1,0]]
+    is equal to 1/2. 
+    """
+    synth_simplex = np.array([[0,0,0],[1,0,0],[0,1,0]])
+    assert np.isclose(simplex_volume(synth_simplex), 1/2)
+
+
+def test_trapezoid_rule_n_dim():
+    """Tests the function 'trapezoid_rule_n_dim' by confirming that the integral of the points [[0,0],[1,-1],[2,-1],[3,0]]
+    is equal to -2. 
+    """
+    test_points = np.array([[0,0],[1,-1],[2,-1],[3,0]])
+    simplex_indices = np.array([[0,1],[1,2],[2,3]])
+    assert np.isclose(trapezoid_rule_n_dim(test_points[:,0], test_points[:,1],simplex_indices), -2)
