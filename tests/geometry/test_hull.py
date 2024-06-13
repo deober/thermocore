@@ -124,7 +124,7 @@ def test_simplex_volume():
     """Tests the function 'simplex_volume' by confirming that the area of the 3D simplex [[0,0,0],[1,0,0],[0,1,0]]
     is equal to 1/2. 
     """
-    synth_simplex = np.array([[0,0,0],[1,0,0],[0,1,0]])
+    synth_simplex = np.array([[0,0],[1,0],[0,1]])
     assert np.isclose(simplex_volume(synth_simplex), 1/2)
 
 
