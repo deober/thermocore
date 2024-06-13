@@ -134,4 +134,4 @@ def test_trapezoid_rule_n_dim():
     """
     test_points = np.array([[0,0],[1,-1],[2,-1],[3,0]])
     simplex_indices = np.array([[0,1],[1,2],[2,3]])
-    assert np.isclose(trapezoid_rule_n_dim(test_points[:,0], test_points[:,1],simplex_indices), -2)
+    assert np.isclose(trapezoid_rule_n_dim(test_points[:,0].reshape(-1,1), test_points[:,1],simplex_indices), -2)
